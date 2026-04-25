@@ -1301,9 +1301,6 @@ body {
     display: block;
 }
 
-.certificate-img:last-child {
-    transform: rotate(-90deg);
-}
 
 /* Mobile - About Section */
 @media (max-width: 767px) {
