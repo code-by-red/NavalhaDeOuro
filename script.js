@@ -28,21 +28,28 @@ function scrollToBooking() {
 }
 
 
-// Função para atualizar o preço com base no serviço selecionado
+// Função para atualizar o preço com base nos serviços selecionados
 function updatePrice() {
-    const selectedService = document.querySelector('input[name="service"]:checked');
+    const selectedServices = document.querySelectorAll('input[name="service"]:checked');
     const priceDisplay = document.getElementById('priceDisplay');
     const priceValue = document.getElementById('priceValue');
     
-    if (selectedService) {
-        const serviceName = selectedService.value;
-        const price = CONFIG.prices[serviceName] || 0;
+    if (selectedServices.length > 0) {
+        let totalPrice = 0;
+        let serviceNames = [];
+        
+        selectedServices.forEach(service => {
+            const serviceName = service.value;
+            const price = CONFIG.prices[serviceName] || 0;
+            totalPrice += price;
+            serviceNames.push(serviceName);
+        });
         
         // Mostra o display de preço
         priceDisplay.style.display = 'block';
         
-        // Animação do valor
-        animatePrice(priceValue, price);
+        // Animação do valor total
+        animatePrice(priceValue, totalPrice);
     } else {
         // Esconde o display se não houver serviço selecionado
         priceDisplay.style.display = 'none';
@@ -72,14 +79,14 @@ function animatePrice(element, targetPrice) {
 
 // Função para validar o formulário
 function validateForm() {
-    const service = document.querySelector('input[name="service"]:checked');
+    const services = document.querySelectorAll('input[name="service"]:checked');
     const day = document.querySelector('input[name="day"]:checked');
     const period = document.querySelector('input[name="period"]:checked');
     
     const errors = [];
     
-    if (!service) {
-        errors.push('Por favor, selecione um serviço.');
+    if (services.length === 0) {
+        errors.push('Por favor, selecione pelo menos um serviço.');
     }
     
     if (!day) {
@@ -147,12 +154,25 @@ function sendToWhatsApp() {
     }
     
     // Coleta os dados do formulário
-    const service = document.querySelector('input[name="service"]:checked').value;
+    const services = document.querySelectorAll('input[name="service"]:checked');
     const day = document.querySelector('input[name="day"]:checked').value;
     const period = document.querySelector('input[name="period"]:checked').value;
     
+    // Monta lista de serviços selecionados
+    let serviceList = [];
+    let totalPrice = 0;
+    
+    services.forEach(service => {
+        const serviceName = service.value;
+        const price = CONFIG.prices[serviceName] || 0;
+        serviceList.push(`• ${serviceName} - R$ ${price.toFixed(2).replace('.', ',')}`);
+        totalPrice += price;
+    });
+    
+    const serviceText = serviceList.join('\n');
+    
     // Monta a mensagem
-    const message = `*Navalha de Ouro - Barbearia Premium*\n\nOlá! Gostaria de agendar um horário em sua barbearia premium.\n\n*Serviço Desejado:* ${service}\n*Preferência de Dia:* ${day}\n*Período Desejado:* ${period}\n\nPoderiam me informar os horários disponíveis? Aguardo contato.\n\n*Atenciosamente,*\nCliente Navalha de Ouro`;
+    const message = `*Navalha de Ouro - Barbearia Premium*\n\nOlá! Gostaria de agendar um horário em sua barbearia premium.\n\n*Serviços Desejados:*\n${serviceText}\n\n*Valor Total:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n\n*Preferência de Dia:* ${day}\n*Período Desejado:* ${period}\n\nPoderiam me informar os horários disponíveis? Aguardo contato.\n\n*Atenciosamente,*\nCliente Navalha de Ouro`;
     
     // Codifica a mensagem para URL
     const encodedMessage = encodeURIComponent(message);

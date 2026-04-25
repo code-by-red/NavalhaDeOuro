@@ -440,10 +440,11 @@ body {
 }
 
 .service-img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    margin: 0 auto;
     transition: transform 0.3s ease;
 }
 
@@ -514,8 +515,8 @@ body {
     display: flex;
     align-items: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--border-color);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -523,15 +524,9 @@ body {
 }
 
 .radio-option:hover {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
     border-color: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.1);
-}
-
-.radio-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
 }
 
 .radio-custom {
@@ -539,50 +534,121 @@ body {
     height: 20px;
     border: 2px solid var(--accent-color);
     border-radius: 50%;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
     position: relative;
     transition: all 0.3s ease;
-    background: var(--bg-secondary);
 }
 
-.radio-option input[type="radio"]:checked + .radio-custom {
-    border-color: var(--accent-color);
-    background: var(--accent-color);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-.radio-option input[type="radio"]:checked + .radio-custom::after {
+.radio-custom::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     width: 8px;
     height: 8px;
-    background: var(--primary-color);
+    background: var(--accent-color);
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .radio-label {
     flex: 1;
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 1.1rem;
 }
 
 .radio-price {
     font-weight: 700;
     color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* Checkbox Styles */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox-option:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    margin-right: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: var(--bg-primary);
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-option input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.checkbox-label {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-primary);
     font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 20px;
-    border: 1px solid var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+}
+
+.checkbox-price {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 1.2rem;
 }
 
 /* Display de Preço */
@@ -958,8 +1024,10 @@ body {
     }
     
     .service-img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
     }
     
     /* Formulário mobile */
@@ -990,6 +1058,28 @@ body {
     }
     
     .radio-price {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    
+    .checkbox-group {
+        gap: 1rem;
+    }
+    
+    .checkbox-option {
+        padding: 1.2rem;
+        font-size: 1rem;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .checkbox-label {
+        font-size: 1rem;
+        flex: 1;
+    }
+    
+    .checkbox-price {
         font-size: 1.1rem;
         font-weight: 600;
     }
