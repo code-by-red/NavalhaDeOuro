@@ -446,6 +446,7 @@ body {
     object-position: center;
     display: block;
     transition: transform 0.3s ease;
+    /* Fixed image sizing */
 }
 
 .service-card:hover .service-img {
