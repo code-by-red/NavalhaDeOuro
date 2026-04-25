@@ -13,7 +13,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "favicon.jpg",
+      "src": "favicon.svg",
       "use": "@vercel/static"
     }
   ],
@@ -27,8 +27,8 @@
       "dest": "/style.css"
     },
     {
-      "src": "/favicon.jpg",
-      "dest": "/favicon.jpg"
+      "src": "/favicon.svg",
+      "dest": "/favicon.svg"
     },
     {
       "src": "/(.*)",

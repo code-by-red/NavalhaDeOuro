@@ -27,37 +27,6 @@ function scrollToBooking() {
     }
 }
 
-// Função para verificar se a imagem está carregando
-function checkImageLoading() {
-    const razorImage = document.querySelector('.gold-razor img');
-    if (razorImage) {
-        console.log('Imagem encontrada:', razorImage.src);
-        
-        razorImage.onload = function() {
-            console.log('Imagem carregada com sucesso!');
-        };
-        
-        razorImage.onerror = function() {
-            console.error('Erro ao carregar a imagem:', razorImage.src);
-            // Para o loop, substitui com SVG de texto
-            console.log('Substituindo com SVG de texto...');
-            razorImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzAwMDAwMCIvPgogIDx0ZXh0IHg9IjYwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjRkZENzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+TkFWQUxIQSBERSBPVVJPPC90ZXh0Pgo8L3N2Zz4=';
-        };
-    } else {
-        console.log('Imagem não encontrada no DOM, verificando se há SVG...');
-        const razorSvg = document.querySelector('.gold-razor svg');
-        if (razorSvg) {
-            console.log('SVG encontrado no lugar da imagem');
-        } else {
-            console.error('Nem imagem nem SVG encontrados no DOM');
-        }
-    }
-}
-
-// Executa quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    checkImageLoading();
-});
 
 // Função para atualizar o preço com base no serviço selecionado
 function updatePrice() {
