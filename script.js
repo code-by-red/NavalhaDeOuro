@@ -365,8 +365,41 @@ function debugForm() {
     return formData;
 }
 
+// Função para controlar o menu mobile
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.querySelector('.nav');
+    
+    if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+        
+        // Fecha o menu ao clicar em um link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Fecha o menu ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuBtn.contains(event.target) && !nav.contains(event.target)) {
+                mobileMenuBtn.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Inicializa a aplicação quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', function() {
+    initApp();
+    initMobileMenu();
+});
 
 // Adiciona suporte para teclado (acessibilidade)
 document.addEventListener('keydown', (e) => {
