@@ -10,24 +10,27 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Playfair Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #2d2d2d;
 }
 
 /* Variáveis de cor */
 :root {
-    --primary-color: #1e3a5f;
-    --secondary-color: #2c5282;
-    --accent-color: #3182ce;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a5568;
-    --text-muted: #718096;
-    --bg-primary: #ffffff;
-    --bg-secondary: #f7fafc;
-    --bg-tertiary: #edf2f7;
-    --border-color: #e2e8f0;
+    --primary-color: #000000;
+    --secondary-color: #1a1a1a;
+    --accent-color: #d4af37;
+    --gold-light: #f4e5c2;
+    --gold-medium: #d4af37;
+    --gold-dark: #b8941f;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2d2d2d;
+    --border-color: #333333;
     --success-color: #38a169;
     --whatsapp-color: #25d366;
 }
@@ -40,28 +43,30 @@ body {
 
 /* Cabeçalho */
 .header {
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: all 0.2s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 20px;
+    padding: 1.5rem 20px;
 }
 
 .logo h1 {
-    color: var(--primary-color);
-    font-size: 1.75rem;
-    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    font-weight: 700;
     margin: 0;
     letter-spacing: -0.025em;
+    text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+    font-family: 'GraffitiYouth-Regular', cursive;
 }
 
 .nav {
@@ -74,12 +79,15 @@ body {
     color: var(--text-secondary);
     font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .nav-link::after {
@@ -89,8 +97,8 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
-    transition: width 0.2s ease;
+    background: linear-gradient(90deg, var(--accent-color), var(--gold-light));
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
@@ -100,34 +108,86 @@ body {
 /* Seção Hero */
 .hero {
     padding: 140px 0 100px;
-    background: var(--bg-primary);
+    background-image: url('img/razor.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--text-primary);
-    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
     max-width: 1100px;
 }
 
+.hero-content {
+    background-image: url('img/razor.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 3rem;
+    border-radius: 15px;
+    position: relative;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.0);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.hero-content > * {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-title {
-    font-size: 2.75rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     line-height: 1.1;
     color: var(--text-primary);
     letter-spacing: -0.025em;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-title span {
+    color: var(--accent-color);
 }
 
 .hero-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     margin-bottom: 2.5rem;
     color: var(--text-secondary);
     line-height: 1.7;
     font-weight: 400;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-illustration {
@@ -136,102 +196,136 @@ body {
     align-items: center;
 }
 
-.phone-mockup {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.2s ease;
+.premium-mockup {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+    position: relative;
 }
 
-.phone-mockup:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
+.premium-mockup:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold-light);
 }
 
-.screen {
-    width: 220px;
-    height: 380px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+.gold-razor {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.5));
+    width: 120px;
+    height: 120px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
 }
 
-.whatsapp-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--whatsapp-color);
+.gold-razor img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.message-bubble {
-    background: var(--whatsapp-color);
-    color: white;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.9rem;
-    border: 1px solid rgba(37, 211, 102, 0.2);
+.luxury-badge {
+    background: linear-gradient(135deg, var(--accent-color), var(--gold-dark));
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 /* Botões */
 .btn {
-    padding: 0.875rem 2rem;
+    padding: 1rem 2.5rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
     text-align: center;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: white;
-    border: 1px solid var(--primary-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--gold-dark));
+    color: var(--primary-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
 }
 
 .btn-primary:hover {
-    background: var(--secondary-color);
-    border-color: var(--secondary-color);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, var(--gold-light), var(--accent-color));
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
 }
 
 .btn-hero {
     font-size: 1.125rem;
-    padding: 1rem 2.5rem;
+    padding: 1.25rem 3rem;
+    font-weight: 700;
 }
 
 .btn-full {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
-/* Seção Benefícios */
-.benefits {
+/* Seção de Serviços */
+.services {
     padding: 100px 0;
-    background: var(--bg-secondary);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .section-title {
     text-align: center;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     margin-bottom: 4rem;
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.025em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Playfair Display', serif;
 }
 
-.benefits-grid {
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--gold-light));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+.services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
@@ -239,53 +333,150 @@ body {
     margin: 0 auto;
 }
 
-.benefit-card {
+.service-card {
     text-align: center;
-    padding: 2.5rem 2rem;
-    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
     background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.benefit-card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--gold-light));
 }
 
-.benefit-icon {
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+    border-color: var(--gold-light);
+    cursor: pointer;
+}
+
+.service-icon {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    display: block;
-    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    border: 2px solid var(--accent-color);
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
 }
 
-.benefit-title {
-    font-size: 1.25rem;
+.service-title {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
     font-weight: 600;
+    font-family: 'Playfair Display', serif;
 }
 
-.benefit-description {
+.service-description {
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    display: block;
+    padding: 0.75rem 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 25px;
+    border: 1px solid var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Seção de Agendamento */
+.highlights {
+    padding: 60px 0;
+    background: var(--bg-secondary);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-img {
+    transform: scale(1.05);
+}
+
 .booking {
-    padding: 100px 0;
-    background: var(--bg-primary);
+    padding: 80px 0;
+    background: var(--bg-secondary);
+}
+
+.booking::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .booking-form {
     max-width: 650px;
     margin: 0 auto;
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
     padding: 3rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+.booking-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--gold-light));
+    border-radius: 16px 16px 0 0;
 }
 
 .form-group {
@@ -293,34 +484,39 @@ body {
 }
 
 .form-group-title {
-    font-size: 1.125rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
     color: var(--text-primary);
     font-weight: 600;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Playfair Display', serif;
 }
 
 .radio-group {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .radio-option {
     display: flex;
     align-items: center;
-    padding: 1.25rem;
-    background: var(--bg-secondary);
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
 }
 
 .radio-option:hover {
-    background: var(--bg-tertiary);
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
     border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.1);
 }
 
 .radio-option input[type="radio"] {
@@ -329,18 +525,20 @@ body {
 }
 
 .radio-custom {
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--border-color);
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
     border-radius: 50%;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     position: relative;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    background: var(--bg-secondary);
 }
 
 .radio-option input[type="radio"]:checked + .radio-custom {
-    border-color: var(--primary-color);
-    background: var(--primary-color);
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .radio-option input[type="radio"]:checked + .radio-custom::after {
@@ -349,87 +547,117 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    background: white;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
     border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .radio-label {
     flex: 1;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .radio-price {
-    font-weight: 600;
-    color: var(--primary-color);
-    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 20px;
+    border: 1px solid var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Display de Preço */
 .price-display {
-    background: var(--bg-secondary);
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
     color: var(--text-primary);
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    padding: 2rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
     text-align: center;
     margin: 2rem 0;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.1);
 }
 
 .price-label {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     font-weight: 600;
 }
 
 .price-value {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     display: block;
     margin-top: 0.5rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
+    text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
 }
 
 /* Aviso */
 .booking-notice {
     text-align: center;
     margin-top: 1.5rem;
-    padding: 1rem;
-    background: var(--bg-tertiary);
-    border-radius: 6px;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
     color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--accent-color);
+    font-style: italic;
 }
 
 /* Rodapé */
 .footer {
-    background: var(--text-primary);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary);
     padding: 3rem 0;
     text-align: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--gold-light));
 }
 
 .footer-logo h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+    font-family: 'Playfair Display', serif;
 }
 
 .footer-logo p {
     opacity: 0.8;
     margin-bottom: 2rem;
     font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
 }
 
 .footer-info p {
     opacity: 0.6;
     font-size: 0.875rem;
+    color: var(--text-muted);
 }
 
 /* Botão WhatsApp Fixo */
@@ -437,28 +665,30 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 56px;
-    height: 56px;
-    background: var(--whatsapp-color);
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--whatsapp-color), #128c7e);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.2s ease;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
     z-index: 1000;
     text-decoration: none;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
 }
 
 .whatsapp-float svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
 }
 
 /* Animações */

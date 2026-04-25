@@ -1,5 +1,5 @@
 # Simple HTTP Server for PowerShell
-$port = 8000
+$port = 8090
 $directory = Get-Location
 
 function Get-MimeType {

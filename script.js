@@ -5,9 +5,14 @@ const CONFIG = {
     
     // Preços dos serviços
     prices: {
-        'Corte': 30,
-        'Barba': 20,
-        'Corte + Barba': 45
+        'Degrade': 25,
+        'Barba': 10,
+        'Sobrancelha': 5,
+        'Cabelo + Barba': 35,
+        'Pigmentação': 45,
+        'Luzes': 60,
+        'Reflexo': 70,
+        'Platinado': 90
     }
 };
 
@@ -21,6 +26,38 @@ function scrollToBooking() {
         });
     }
 }
+
+// Função para verificar se a imagem está carregando
+function checkImageLoading() {
+    const razorImage = document.querySelector('.gold-razor img');
+    if (razorImage) {
+        console.log('Imagem encontrada:', razorImage.src);
+        
+        razorImage.onload = function() {
+            console.log('Imagem carregada com sucesso!');
+        };
+        
+        razorImage.onerror = function() {
+            console.error('Erro ao carregar a imagem:', razorImage.src);
+            // Para o loop, substitui com SVG de texto
+            console.log('Substituindo com SVG de texto...');
+            razorImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzAwMDAwMCIvPgogIDx0ZXh0IHg9IjYwIiB5PSI2MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjRkZENzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+TkFWQUxIQSBERSBPVVJPPC90ZXh0Pgo8L3N2Zz4=';
+        };
+    } else {
+        console.log('Imagem não encontrada no DOM, verificando se há SVG...');
+        const razorSvg = document.querySelector('.gold-razor svg');
+        if (razorSvg) {
+            console.log('SVG encontrado no lugar da imagem');
+        } else {
+            console.error('Nem imagem nem SVG encontrados no DOM');
+        }
+    }
+}
+
+// Executa quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    checkImageLoading();
+});
 
 // Função para atualizar o preço com base no serviço selecionado
 function updatePrice() {
@@ -146,7 +183,7 @@ function sendToWhatsApp() {
     const period = document.querySelector('input[name="period"]:checked').value;
     
     // Monta a mensagem
-    const message = `Olá! Gostaria de agendar um horário.\n\nServiço: ${service}\nPreferência: ${day} - ${period}\n\nPode me informar os horários disponíveis?`;
+    const message = `*Navalha de Ouro - Barbearia Premium*\n\nOlá! Gostaria de agendar um horário em sua barbearia premium.\n\n*Serviço Desejado:* ${service}\n*Preferência de Dia:* ${day}\n*Período Desejado:* ${period}\n\nPoderiam me informar os horários disponíveis? Aguardo contato.\n\n*Atenciosamente,*\nCliente Navalha de Ouro`;
     
     // Codifica a mensagem para URL
     const encodedMessage = encodeURIComponent(message);
@@ -212,24 +249,10 @@ function animateOnScroll() {
     });
 }
 
-// Função para adicionar efeito ao header na rolagem
+// Função para manter header consistente (sem efeitos de scroll)
 function headerScrollEffect() {
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = '#fff';
-            header.style.backdropFilter = 'none';
-        }
-        
-        lastScroll = currentScroll;
-    });
+    // Header mantém aparência fixa durante toda navegação
+    // Nenhuma alteração de cor ou estilo ao rolar
 }
 
 // Função para adicionar CSS de animações adicionais
@@ -355,14 +378,8 @@ function initApp() {
         });
     });
     
-    // Adiciona efeito de parallax suave na seção hero
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
+    // Remove efeitos de scroll que alteram o header
+    // Header mantém aparência consistente durante toda navegação
     
     console.log('BarberCode - Sistema de Agendamento inicializado com sucesso!');
 }

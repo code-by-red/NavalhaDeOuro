@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberZap - Sistema de Agendamento para Barbearias</title>
+    <title>Navalha de Ouro - Barbearia Premium</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon-updated.svg">
-    <link rel="icon" type="image/svg+xml" href="favicon-updated.svg" sizes="32x32">
-    <link rel="icon" type="image/svg+xml" href="favicon-updated.svg" sizes="16x16">
-    <link rel="icon" type="image/svg+xml" href="favicon-updated.svg" sizes="192x192">
-    <link rel="apple-touch-icon" href="favicon-updated.svg">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="32x32">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="16x16">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.svg">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,11 +22,11 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h1>BarberZap</h1>
+                <h1>⚜️ Navalha de Ouro</h1>
             </div>
             <nav class="nav">
                 <a href="#hero" class="nav-link">Início</a>
-                <a href="#benefits" class="nav-link">Benefícios</a>
+                <a href="#services" class="nav-link">Serviços</a>
                 <a href="#booking" class="nav-link">Agendar</a>
             </nav>
         </div>
@@ -34,59 +36,123 @@
     <section id="hero" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Receba clientes prontos para agendar no WhatsApp</h1>
+                <h1 class="hero-title">Um corte bem feito define você ✂️💈</h1>
                 <p class="hero-subtitle">
-                    Sistema simples que organiza seus agendamentos e envia clientes direto para seu WhatsApp 
-                    com todas as informações necessárias. Menos trabalho, mais agendamentos.
+                   Desde 2020 fazendo os melhores cortes, agende já seu horário!
                 </p>
                 <button class="btn btn-primary btn-hero" onclick="scrollToBooking()">
-                    Testar agendamento
+                    Agendar Horário
                 </button>
             </div>
-            <div class="hero-image">
-                <div class="hero-illustration">
-                    <div class="phone-mockup">
-                        <div class="screen">
-                            <div class="whatsapp-icon">💇</div>
-                            <div class="message-bubble">Agendamento confirmado!</div>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços Premium</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">✂️</div>
+                    <h3 class="service-title">Degrade</h3>
+                    <p class="service-description">
+                        Degrade profissional com acabamento impecável e técnica avançada.
+                    </p>
+                    <span class="service-price">R$ 25,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">🪒</div>
+                    <h3 class="service-title">Barba</h3>
+                    <p class="service-description">
+                        Barba completa com navalha, produtos premium e finalização perfeita.
+                    </p>
+                    <span class="service-price">R$ 10,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">👁️</div>
+                    <h3 class="service-title">Sobrancelha</h3>
+                    <p class="service-description">
+                        Design e alinhamento de sobrancelha com técnica precisa e elegante.
+                    </p>
+                    <span class="service-price">R$ 5,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">💇</div>
+                    <h3 class="service-title">Cabelo + Barba</h3>
+                    <p class="service-description">
+                        Pacote completo com corte de cabelo e barba com acabamento premium.
+                    </p>
+                    <span class="service-price">R$ 35,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Pigmentação</h3>
+                    <p class="service-description">
+                        Pigmentação profissional para cobertura e realce da barba.
+                    </p>
+                    <span class="service-price">R$ 45,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">💡</div>
+                    <h3 class="service-title">Luzes</h3>
+                    <p class="service-description">
+                        Luzes discretas e elegantes para realçar seu estilo pessoal.
+                    </p>
+                    <span class="service-price">R$ 60,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Reflexo</h3>
+                    <p class="service-description">
+                        Reflexo premium com produtos de alta qualidade e aplicação precisa.
+                    </p>
+                    <span class="service-price">R$ 70,00</span>
+                </div>
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-icon">🌟</div>
+                    <h3 class="service-title">Platinado</h3>
+                    <p class="service-description">
+                        Platinado luxuoso com técnica especial e produtos premium.
+                    </p>
+                    <span class="service-price">R$ 90,00</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção de Benefícios -->
-    <section id="benefits" class="benefits">
+    <!-- Seção de Destaques -->
+    <section id="highlights" class="highlights">
         <div class="container">
-            <h2 class="section-title">Por que usar o BarberZap?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">▪</div>
-                    <h3 class="benefit-title">Economia de tempo</h3>
-                    <p class="benefit-description">
-                        Clientes enviam todas as informações necessárias de uma vez, reduzindo o tempo gasto com perguntas.
+            <h2 class="section-title">Nossos Serviços em Destaque</h2>
+            <div class="highlights-grid">
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/0jwV8Gnq/Captura-de-tela-2026-04-25-005812.png" alt="Platinado" class="service-img">
+                    </div>
+                    <div class="service-icon">🌟</div>
+                    <h3 class="service-title">Platinado</h3>
+                    <p class="service-description">
+                        Platinado luxuoso com técnica especial e produtos premium.
                     </p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">▪</div>
-                    <h3 class="benefit-title">WhatsApp integrado</h3>
-                    <p class="benefit-description">
-                        Utiliza o aplicativo que seus clientes já usam diariamente, sem necessidade de novas ferramentas.
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/Z5kxbStB/Captura-de-tela-2026-04-25-005028.png" alt="Desenho" class="service-img">
+                    </div>
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Desenho</h3>
+                    <p class="service-description">
+                        Desenho artístico e personalizado com técnica especial.
                     </p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">▪</div>
-                    <h3 class="benefit-title">Agendamentos organizados</h3>
-                    <p class="benefit-description">
-                        Receba solicitações em formato padronizado, facilitando o controle e planejamento da agenda.
-                    </p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">▪</div>
-                    <h3 class="benefit-title">Mais conversões</h3>
-                    <p class="benefit-description">
-                        Processo direto e simples aumenta as chances de visitantes se tornarem clientes agendados.
+                <div class="service-card" onclick="scrollToBooking()">
+                    <div class="service-image">
+                        <img src="https://i.postimg.cc/QtkpS6fd/Captura-de-tela-2026-04-25-010554.png" alt="Degrade" class="service-img">
+                    </div>
+                    <div class="service-icon">✂️</div>
+                    <h3 class="service-title">Degrade</h3>
+                    <p class="service-description">
+                        Degrade profissional com acabamento impecável e técnica avançada.
                     </p>
                 </div>
             </div>
@@ -96,30 +162,60 @@
     <!-- Seção de Agendamento -->
     <section id="booking" class="booking">
         <div class="container">
-            <h2 class="section-title">Teste o sistema</h2>
+            <h2 class="section-title">Agende Seu Horário Premium</h2>
             <div class="booking-form">
                 <form id="appointmentForm">
                     <!-- Seleção de Serviço -->
                     <div class="form-group">
-                        <h3 class="form-group-title">Escolha o serviço</h3>
+                        <h3 class="form-group-title">Escolha seu serviço premium</h3>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="service" value="Corte" onchange="updatePrice()">
+                                <input type="radio" name="service" value="Degrade" onchange="updatePrice()">
                                 <span class="radio-custom"></span>
-                                <span class="radio-label">Corte</span>
-                                <span class="radio-price">R$ 30</span>
+                                <span class="radio-label">Degrade</span>
+                                <span class="radio-price">R$ 25,00</span>
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="service" value="Barba" onchange="updatePrice()">
                                 <span class="radio-custom"></span>
                                 <span class="radio-label">Barba</span>
-                                <span class="radio-price">R$ 20</span>
+                                <span class="radio-price">R$ 10,00</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="service" value="Corte + Barba" onchange="updatePrice()">
+                                <input type="radio" name="service" value="Sobrancelha" onchange="updatePrice()">
                                 <span class="radio-custom"></span>
-                                <span class="radio-label">Corte + Barba</span>
-                                <span class="radio-price">R$ 45</span>
+                                <span class="radio-label">Sobrancelha</span>
+                                <span class="radio-price">R$ 5,00</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="service" value="Cabelo + Barba" onchange="updatePrice()">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Cabelo + Barba</span>
+                                <span class="radio-price">R$ 35,00</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="service" value="Pigmentação" onchange="updatePrice()">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Pigmentação</span>
+                                <span class="radio-price">R$ 45,00</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="service" value="Luzes" onchange="updatePrice()">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Luzes</span>
+                                <span class="radio-price">R$ 60,00</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="service" value="Reflexo" onchange="updatePrice()">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Reflexo</span>
+                                <span class="radio-price">R$ 70,00</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="service" value="Platinado" onchange="updatePrice()">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Platinado</span>
+                                <span class="radio-price">R$ 90,00</span>
                             </label>
                         </div>
                     </div>
@@ -176,12 +272,12 @@
 
                     <!-- Botão de Envio -->
                     <button type="button" class="btn btn-primary btn-full" onclick="sendToWhatsApp()">
-                        Enviar para WhatsApp
+                        Agendar via WhatsApp
                     </button>
 
                     <!-- Aviso -->
                     <div class="booking-notice">
-                        <p>O barbeiro responderá com os horários disponíveis para sua escolha.</p>
+                        <p>Nossos especialistas entrarão em contato para confirmar seu horário.</p>
                     </div>
                 </form>
             </div>
@@ -193,11 +289,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>BarberZap</h3>
-                    <p>Sistema de agendamento para barbearias</p>
+                    <h3>Navalha de Ouro</h3>
+                    <p>Barbearia Premium - Experiência Luxuosa</p>
                 </div>
                 <div class="footer-info">
-                    <p>&copy; 2026 BarberZap. Todos os direitos reservados.</p>
+                    <p>&copy; 2026 Navalha de Ouro. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
