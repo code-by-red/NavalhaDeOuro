@@ -1,7 +1,7 @@
 // Configurações do sistema
 const CONFIG = {
     // Número do WhatsApp (fácil de editar)
-    whatsappNumber: '5511922048764',
+    whatsappNumber: '558188684584',
     
     // Preços dos serviços
     prices: {
@@ -9,7 +9,7 @@ const CONFIG = {
         'Barba': 10,
         'Sobrancelha': 5,
         'Cabelo + Barba': 35,
-        'Pigmentação': 45,
+        'Pigmentação': 50,
         'Luzes': 60,
         'Reflexo': 70,
         'Platinado': 90
@@ -172,7 +172,7 @@ function sendToWhatsApp() {
     const serviceText = serviceList.join('\n');
     
     // Monta a mensagem
-    const message = `*Navalha de Ouro - Barbearia Premium*\n\nOlá! Gostaria de agendar um horário em sua barbearia premium.\n\n*Serviços Desejados:*\n${serviceText}\n\n*Valor Total:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n\n*Preferência de Dia:* ${day}\n*Período Desejado:* ${period}\n\nPoderiam me informar os horários disponíveis? Aguardo contato.\n\n*Atenciosamente,*\nCliente Navalha de Ouro`;
+    const message = `*Navalha de Ouro - Barbearia*\n\nOlá! Gostaria de agendar um horário em sua barbearia.\n\n*Serviços Desejados:*\n${serviceText}\n\n*Valor Total:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n\n*Preferência de Dia:* ${day}\n*Período Desejado:* ${period}\n\nPoderiam me informar os horários disponíveis? Aguardo contato.\n\n*Atenciosamente,*\nCliente Navalha de Ouro`;
     
     // Codifica a mensagem para URL
     const encodedMessage = encodeURIComponent(message);
