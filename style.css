@@ -436,18 +436,14 @@ body {
     border-radius: 12px;
     margin-bottom: 1rem;
     background: var(--bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
 }
 
 .service-img {
     max-width: 100%;
-    max-height: 100%;
-    width: auto;
     height: auto;
-    object-fit: contain;
-    object-position: center;
+    display: block;
+    margin: 0 auto;
     transition: transform 0.3s ease;
 }
 
@@ -962,8 +958,8 @@ body {
     }
     
     .service-img {
-        max-height: 180px;
-        object-fit: contain;
+        max-width: 100%;
+        height: auto;
     }
     
     /* Formulário mobile */
